@@ -12,7 +12,7 @@ class App extends React.Component {
     return (
       <main>
         <h1>
-          Try<span className="title">dutor</span>
+          📗 Try<span className="title">dutor</span>
         </h1>
         <Form />
         <Translated />

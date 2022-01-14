@@ -25,7 +25,7 @@ class Form extends React.Component {
     return (
       <form>
         <label htmlFor="translate">
-          Traduzir:
+          Texto em PT-BR:
           <textarea
             id="translate"
             name="translate"

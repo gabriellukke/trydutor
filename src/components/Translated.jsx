@@ -3,8 +3,10 @@ import React from 'react';
 class Translated extends React.Component {
   render() {
     return (
-      <section>Tradução</section>
-    )
+      <section>
+        <p>Tradução aqui</p>
+      </section>
+    );
   }
 }
 

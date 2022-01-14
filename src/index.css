@@ -11,16 +11,22 @@ body {
   box-sizing: border-box;
   padding: 16px;
   margin: 0;
-  background-color: #444955;
+  background-color: #1a1b1c;
   font-size: 18px;
   font-family: tahoma;
   color: white;
 }
 
 button,
-select {
-  padding: 12px 18px;
+select,
+textarea {
+  padding: 12px;
   margin-bottom: 12px;
+  font-size: 18px;
+}
+
+textarea {
+  color: #41197f;
 }
 
 textarea,
@@ -35,6 +41,20 @@ button {
   font-family: tahoma;
   color: white;
   background-color: #006dfb;
+  padding: 12px 28px;
+  border-radius: 5px;
+  border: 1px solid #0060de;
+  position: relative;
+  font-size: 18px;
+}
+
+button:active {
+  background: #217cf2;
+  -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+  -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+  box-shadow: inset 0px 0px 5px #c1c1c1;
+  outline: none;
+  top: 1px;
 }
 
 section {
