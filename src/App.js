@@ -11,6 +11,9 @@ class App extends React.Component {
   render() {
     return (
       <main>
+        <h1>
+          Try<span className="title">dutor</span>
+        </h1>
         <Form />
         <Translated />
       </main>

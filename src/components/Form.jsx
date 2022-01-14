@@ -3,11 +3,11 @@ import React from 'react';
 class Form extends React.Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
       translate: '',
-      selectedLanguage: '', 
-    }
+      selectedLanguage: '',
+    };
 
     this.handleChange = this.handleChange.bind(this);
   }
@@ -31,10 +31,12 @@ class Form extends React.Component {
             name="translate"
             value={translate}
             onChange={this.handleChange}
+            rows={8}
+            cols={40}
           />
         </label>
         <label htmlFor="selectedLanguage">
-          Para:
+          Para:{' '}
           <select
             id="selectedLanguage"
             name="selectedLanguage"
@@ -46,14 +48,11 @@ class Form extends React.Component {
             )) */}
           </select>
         </label>
-        <button
-          type="submit"
-          onClick={this.handleClick}
-        >
+        <button type="submit" onClick={this.handleClick}>
           Traduzir
         </button>
       </form>
-    )
+    );
   }
 }
 
