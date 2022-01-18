@@ -1,8 +1,8 @@
-import { GET_LANGS } from '../actions';
+import { GET_LANGS, TRANSLATE_TEXT } from '../actions';
 
 const INITIAL_STATE = {
   languages: [],
-  translation: {
+  translationInfos: {
     text: '',
     source: '',
     target: '',
@@ -18,6 +18,11 @@ const translateReducer = (state = INITIAL_STATE, action) => {
       ...state,
       languages: [...action.payload],
     };
+  case TRANSLATE_TEXT:
+    return {
+      ...state,
+      translationInfos: action.payload,
+    }
   default:
     return state;
   }

@@ -1,13 +1,9 @@
 import React from 'react';
 import Form from './components/Form';
 import Translated from './components/Translated';
-import { getLanguages } from './services/API';
+import './App.css';
 
 class App extends React.Component {
-  componentDidMount() {
-    getLanguages();
-  }
-
   render() {
     return (
       <main>

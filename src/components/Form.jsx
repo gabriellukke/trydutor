@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getLangsThunk } from '../redux/actions';
+import { getLangsThunk, translateTextThunk } from '../redux/actions';
 
 class Form extends React.Component {
   constructor(props) {
@@ -8,10 +8,11 @@ class Form extends React.Component {
     
     this.state = {
       translate: '',
-      selectedLanguage: '', 
+      selectedLanguage: 'en', 
     }
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -25,6 +26,8 @@ class Form extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
+    const { translate } = this.props;
+    translate(this.state);
   }
 
   render() {
@@ -50,7 +53,7 @@ class Form extends React.Component {
             onChange={this.handleChange}
           >
             {languages.length && languages.map((language) => (
-              <option key={ language.code } value={ language.name }>{language.name}</option>
+              <option key={ language.code } value={ language.code }>{language.name}</option>
             ))}
           </select>
         </label>
@@ -71,6 +74,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getAllLangs: () => dispatch(getLangsThunk()),
-})
+  translate: (userInfo) => dispatch(translateTextThunk(userInfo))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form);
