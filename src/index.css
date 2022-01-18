@@ -1,12 +1,22 @@
+/* Verde Claro */
+/* #2fc18c */
+/* Verde Escuro */
+/* #036b52 */
+/* Cinza */
+/* #444955 */
+/* Azul */
+/* #006dfb */
+
 body {
   box-sizing: border-box;
   padding: 16px;
   margin: 0;
-  background-color: #1A1B1C;
+  background-color: #1a1b1c;
   font-size: 18px;
   font-family: tahoma;
   color: white;
 }
+
 button,
 select,
 textarea {
@@ -14,9 +24,11 @@ textarea {
   margin-bottom: 12px;
   font-size: 18px;
 }
+
 textarea {
-  color: #41197F;
+  color: #41197f;
 }
+
 textarea,
 button,
 label {
@@ -24,34 +36,38 @@ label {
   margin-bottom: 12px;
   margin-top: 12px;
 }
+
 button {
   font-family: tahoma;
   color: white;
-  background-color: #006DFB;
+  background-color: #006dfb;
   padding: 12px 28px;
   border-radius: 5px;
-  border: 1px solid #0060DE;
+  border: 1px solid #0060de;
   position: relative;
   font-size: 18px;
 }
+
 button:active {
-  background: #217CF2;
-  -webkit-box-shadow: inset 0px 0px 5px #C1C1C1;
-  -moz-box-shadow: inset 0px 0px 5px #C1C1C1;
-  box-shadow: inset 0px 0px 5px #C1C1C1;
+  background: #217cf2;
+  -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+  -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+  box-shadow: inset 0px 0px 5px #c1c1c1;
   outline: none;
   top: 1px;
 }
+
 section {
-  background-color: #2FC18C;
+  background-color: #2fc18c;
   padding: 12px;
   min-height: 150px;
   border-radius: 5px;
 }
+
 h1 {
-  color: #8958A3;
+  color: #8958a3;
   font-size: 52px;
 }
 h1 .title {
-  color: #2FC18C;
+  color: #2fc18c;
 }

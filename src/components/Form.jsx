@@ -5,7 +5,7 @@ import { getLangsThunk, translateTextThunk } from '../redux/actions';
 class Form extends React.Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
       translate: '',
       selectedLanguage: 'en', 
@@ -36,16 +36,18 @@ class Form extends React.Component {
     return (
       <form>
         <label htmlFor="translate">
-          Traduzir:
+          Texto em PT-BR:
           <textarea
             id="translate"
             name="translate"
             value={translate}
             onChange={this.handleChange}
+            rows={8}
+            cols={40}
           />
         </label>
         <label htmlFor="selectedLanguage">
-          Para:
+          Para:{' '}
           <select
             id="selectedLanguage"
             name="selectedLanguage"
@@ -57,14 +59,11 @@ class Form extends React.Component {
             ))}
           </select>
         </label>
-        <button
-          type="submit"
-          onClick={this.handleClick}
-        >
+        <button type="submit" onClick={this.handleClick}>
           Traduzir
         </button>
       </form>
-    )
+    );
   }
 }
 
