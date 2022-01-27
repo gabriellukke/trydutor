@@ -11,7 +11,6 @@ const INITIAL_STATE = {
 };
 
 const translateReducer = (state = INITIAL_STATE, action) => {
-  console.log(action)
   switch (action.type) {
   case GET_LANGS:
     return {

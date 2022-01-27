@@ -37,7 +37,6 @@ export const translateTextThunk = (userInfos) => async (dispatch) => {
       target: userInfos.selectedLanguage,
       translation: translatedText,
     }
-
     return dispatch(translateTextAction(sendObject))
   } catch (error) {
     
