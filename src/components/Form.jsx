@@ -14,25 +14,6 @@ const Form = () => {
     dispatch(getLangsThunk());
   }, [dispatch])
 
- 
-  /* const handleChange = ({ target: { name, value } }) => {
-    const obj = {
-      translate: () => setTranslate(value),
-      selectedLanguage: () => setSelectedLanguage(value)
-    }
-    return obj[name]();
-  } */
-
-   /****
-   * For some reason, the setter of useState hook
-   * doesn't work as a function in the object key.
-   * I had to use it as a callback in the object key
-   ****/
-  const handleChange = ({ target: { name, value } }) => ({
-    translate: () => setTranslate(value),
-    selectedLanguage: () => setSelectedLanguage(value)
-  })[name]()
-
   const handleClick = (e) => {
     e.preventDefault();
     dispatch(translateTextThunk({ translate, selectedLanguage }));
@@ -46,7 +27,7 @@ const Form = () => {
           id="translate"
           name="translate"
           value={translate}
-          onChange={handleChange}
+          onChange={ ({ target }) => setTranslate(target.value)}
           rows={8}
           cols={40}
         />
@@ -57,7 +38,7 @@ const Form = () => {
           id="selectedLanguage"
           name="selectedLanguage"
           value={selectedLanguage}
-          onChange={handleChange}
+          onChange={ ({ target }) => setSelectedLanguage(target.value)}
         >
           {languages.length && languages.map((language) => (
             <option key={ language.code } value={ language.code }>{language.name}</option>
