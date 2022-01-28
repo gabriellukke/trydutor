@@ -1,19 +1,18 @@
 import React from 'react';
+import Box from './components/Box';
 import Form from './components/Form';
-import Translated from './components/Translated';
+import TranslateProvider from './context/TranslateProvider';
 
-class App extends React.Component {
-  render() {
-    return (
+export default function App() {
+  return (
+    <TranslateProvider>
       <main>
         <h1>
           📗 Try<span className="title">dutor</span>
         </h1>
         <Form />
-        <Translated />
+        <Box />
       </main>
-    );
-  }
+    </TranslateProvider>
+  );
 }
-
-export default App;
