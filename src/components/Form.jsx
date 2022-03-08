@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { getLangsThunk, translateTextThunk } from '../redux/actions';
@@ -13,6 +13,18 @@ const Form = () => {
   useEffect(() => {
     dispatch(getLangsThunk());
   }, [dispatch])
+ 
+  /* const handleChange = ({ target: { name, value } }) => {
+    const obj = {
+      translate: setTranslate,
+      selectedLanguage: setSelectedLanguage
+    }
+    return obj[name](value);
+  } */
+  const handleChange = ({ target: { name, value } }) => ({
+    translate: setTranslate,
+    selectedLanguage: setSelectedLanguage
+  })[name](value)
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -27,7 +39,7 @@ const Form = () => {
           id="translate"
           name="translate"
           value={translate}
-          onChange={ ({ target }) => setTranslate(target.value)}
+          onChange={handleChange}
           rows={8}
           cols={40}
         />
@@ -38,7 +50,7 @@ const Form = () => {
           id="selectedLanguage"
           name="selectedLanguage"
           value={selectedLanguage}
-          onChange={ ({ target }) => setSelectedLanguage(target.value)}
+          onChange={handleChange}
         >
           {languages.length && languages.map((language) => (
             <option key={ language.code } value={ language.code }>{language.name}</option>
