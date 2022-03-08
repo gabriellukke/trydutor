@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { getLangsThunk, translateTextThunk } from '../redux/actions';
@@ -13,6 +13,24 @@ const Form = () => {
   useEffect(() => {
     dispatch(getLangsThunk());
   }, [dispatch])
+ 
+  /* const handleChange = ({ target: { name, value } }) => {
+    const obj = {
+      translate: () => setTranslate(value),
+      selectedLanguage: () => setSelectedLanguage(value)
+    }
+    return obj[name]();
+  } */
+
+   /****
+   * For some reason, the setter of useState hook
+   * doesn't work as a function in the object key.
+   * I had to use it as a callback in the object key
+   ****/
+  const handleChange = ({ target: { name, value } }) => ({
+    translate: setTranslate,
+    selectedLanguage: setSelectedLanguage
+  })[name](value)
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -27,7 +45,7 @@ const Form = () => {
           id="translate"
           name="translate"
           value={translate}
-          onChange={ ({ target }) => setTranslate(target.value)}
+          onChange={handleChange}
           rows={8}
           cols={40}
         />
@@ -38,7 +56,7 @@ const Form = () => {
           id="selectedLanguage"
           name="selectedLanguage"
           value={selectedLanguage}
-          onChange={ ({ target }) => setSelectedLanguage(target.value)}
+          onChange={handleChange}
         >
           {languages.length && languages.map((language) => (
             <option key={ language.code } value={ language.code }>{language.name}</option>
