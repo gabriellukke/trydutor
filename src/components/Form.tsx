@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useDispatch, TypedUseSelectorHook, RootStateOrAny } from 'react-redux';
 import { getLangsThunk, translateTextThunk } from '../redux/actions';
+import type { RootState, AppDispatch } from '../redux/store';
 
 interface LanguageTypes {
   code: React.Key;
@@ -12,8 +13,8 @@ const Form: React.FC = () => {
   const [translate, setTranslate] = useState<string>('');
   const [selectedLanguage, setSelectedLanguage] = useState<string>('en');
 
-  const dispatch = useDispatch();
-  const languages = useSelector(({ translateReducer }) => translateReducer.languages)
+  const dispatch = useDispatch<AppDispatch>();
+  const languages : TypedUseSelectorHook<RootState> = useSelector(({ translateReducer } : RootStateOrAny) => translateReducer.languages)
 
   useEffect(() => {
     dispatch(getLangsThunk());

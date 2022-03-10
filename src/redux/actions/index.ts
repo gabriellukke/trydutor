@@ -1,4 +1,5 @@
 import { getLanguages, translateText } from '../../services/API';
+import type { AppDispatch } from '../store';
 
 export const GET_LANGS = 'GET_LANGS';
 export const GET_LANGS_FAIL = 'GET_LANGS';
@@ -18,7 +19,7 @@ export const translateTextAction = (payload) => ({
   payload
 });
 
-export const getLangsThunk = () => async (dispatch) => {
+export const getLangsThunk = () => async (dispatch : AppDispatch) => {
   try {
     const languages = await getLanguages();
     console.log(languages)
@@ -28,7 +29,7 @@ export const getLangsThunk = () => async (dispatch) => {
   }
 }
 
-export const translateTextThunk = (userInfos) => async (dispatch) => {
+export const translateTextThunk = (userInfos) => async (dispatch : AppDispatch) => {
   try {
     const { translatedText } = await translateText(userInfos.translate, userInfos.selectedLanguage);
     const sendObject = {
