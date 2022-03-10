@@ -3,9 +3,14 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { getLangsThunk, translateTextThunk } from '../redux/actions';
 
-const Form = () => {
-  const [translate, setTranslate] = useState('');
-  const [selectedLanguage, setSelectedLanguage] = useState('en');
+interface LanguageTypes {
+  code: React.Key;
+  name: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal;
+}
+
+const Form: React.FC = () => {
+  const [translate, setTranslate] = useState<string>('');
+  const [selectedLanguage, setSelectedLanguage] = useState<string>('en');
 
   const dispatch = useDispatch();
   const languages = useSelector(({ translateReducer }) => translateReducer.languages)
@@ -32,7 +37,7 @@ const Form = () => {
     selectedLanguage: setSelectedLanguage
   })[name](value)
 
-  const handleClick = (e) => {
+  const handleClick = (e: { preventDefault: () => void; }) : void => {
     e.preventDefault();
     dispatch(translateTextThunk({ translate, selectedLanguage }));
   }
@@ -58,7 +63,7 @@ const Form = () => {
           value={selectedLanguage}
           onChange={handleChange}
         >
-          {languages.length && languages.map((language) => (
+          {languages.length && languages.map((language : LanguageTypes) => (
             <option key={ language.code } value={ language.code }>{language.name}</option>
           ))}
         </select>

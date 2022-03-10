@@ -10,7 +10,7 @@ const INITIAL_STATE = {
   },
 };
 
-const translateReducer = (state = INITIAL_STATE, action) => {
+const translateReducer : object = (state = INITIAL_STATE, action: { type: string; payload: any; }) => {
   switch (action.type) {
   case GET_LANGS:
     return {
