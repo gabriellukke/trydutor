@@ -1,5 +1,7 @@
+import { AnyAction } from 'redux';
+import { ThunkAction } from 'redux-thunk';
 import { getLanguages, translateText } from '../../services/API';
-import type { AppDispatch } from '../store';
+import { AppDispatch, RootState } from '../store';
 
 export const GET_LANGS = 'GET_LANGS';
 export const GET_LANGS_FAIL = 'GET_LANGS';
@@ -19,7 +21,8 @@ export const translateTextAction = (payload) => ({
   payload
 });
 
-export const getLangsThunk = () => async (dispatch : AppDispatch) => {
+export function getLangsThunk () {
+  return async (dispatch) => {
   try {
     const languages = await getLanguages();
     console.log(languages)
@@ -28,6 +31,8 @@ export const getLangsThunk = () => async (dispatch : AppDispatch) => {
     dispatch(getLangsFail());
   }
 }
+}
+
 
 export const translateTextThunk = (userInfos) => async (dispatch : AppDispatch) => {
   try {
