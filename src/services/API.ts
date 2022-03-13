@@ -1,10 +1,17 @@
-export const getLanguages = async () => {
+interface GetLanguages {
+  languages: {
+    name: string;
+    code: string;
+  }[];
+}
+
+export const getLanguages = async () : Promise<GetLanguages> => {
   const response = await fetch('https://libretranslate.com/languages');
   const languages = await response.json();
   return response.ok ? Promise.resolve(languages) : Promise.reject(languages);
 };
 
-export const translateText = async (text, lang) => {
+export const translateText = async (text: string, lang: string) : Promise<any> => {
   const apiOptions = {
     q: text,
     source: 'pt',
