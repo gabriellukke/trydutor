@@ -1,5 +1,10 @@
 import { GET_LANGS, TRANSLATE_TEXT } from '../actions';
 
+export interface ActionType {
+  type: keyof typeof GET_LANGS | keyof typeof TRANSLATE_TEXT;
+  payload?: any;
+}
+
 const INITIAL_STATE = {
   languages: [],
   translationInfos: {
@@ -10,7 +15,7 @@ const INITIAL_STATE = {
   },
 };
 
-const translateReducer : object = (state = INITIAL_STATE, action: { type: string; payload: any; }) => {
+const translateReducer : object = (state = INITIAL_STATE, action : ActionType) => {
   switch (action.type) {
   case GET_LANGS:
     return {
