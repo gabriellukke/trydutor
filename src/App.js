@@ -7,8 +7,8 @@ export default function App() {
   return (
     <TranslateProvider>
       <main>
-        <h1>
-          📗 Try<span className="title">dutor</span>
+        <h1 className="text-3xl font-bold">
+          📗 Try<span>dutor</span>
         </h1>
         <Form />
         <Box />
