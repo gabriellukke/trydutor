@@ -47,7 +47,7 @@ const Form = () => {
         <button
           type="submit" 
           onClick={handleClick}
-          className="rounded-md bg-purple-500 p-2 mr-5"
+          className="rounded-md bg-purple-500 p-2 mr-5 hover:bg-purple-700"
         >
           Traduzir
         </button>
